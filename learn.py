@@ -1,11 +1,14 @@
 import tkinter as tk
-import file as f
+import file
 
 
-def next_page():
+def open_learn(path):
+    learn_win = tk.Toplevel()
+    learn_win.title("단어 학습")
+    learn_win.geometry("400x300")
 
-    for widget in root.winfo_children():
-        widget.destroy()
+    label = tk.Label(learn_win, text="")
+    label.pack(pady=20)
 
-        tk.Label(root, text="단어").pack(pady=20)
-        tk.Label(root, text="뜻").pack(pady=20)
+    content = file.get_content(path)
+    label.config(text=content)
